@@ -99,8 +99,6 @@ void loop() {
     // Obtain the raw output from model's output tensor
     MicroPrintf("Raw output: %d", output->data.uint8[0]);
 
-    int predicted_class=0;
-
     // Real value prediction
     double prediction = (output->data.uint8[0] - output->params.zero_point) * output->params.scale;
 

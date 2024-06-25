@@ -26,8 +26,8 @@ def representative_data_gen():
         yield [data]
 
 # Caricare il modello SavedModel
-saved_model_dir = 'model/saved_model'
-converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir)
+model_dir = 'model/saved_model'
+converter = tf.lite.TFLiteConverter.from_saved_model(model_dir)
 
 # Applicare la quantizzazione completa
 converter.optimizations = [tf.lite.Optimize.DEFAULT]

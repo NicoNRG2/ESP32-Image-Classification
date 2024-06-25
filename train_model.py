@@ -4,7 +4,7 @@ import os
 
 # Impostazioni di base
 image_size = (96, 96)
-batch_size = 4
+batch_size = 32
 
 # Creare i generatori di immagini per train, validation e test
 train_datagen = ImageDataGenerator(rescale=1./255)
@@ -22,7 +22,8 @@ train_generator = train_datagen.flow_from_directory(
     target_size=image_size,
     color_mode='grayscale',
     batch_size=batch_size,
-    class_mode='binary'
+    class_mode='binary',
+    shuffle=True
 )
 
 # Generator per la validazione
@@ -31,7 +32,8 @@ valid_generator = valid_datagen.flow_from_directory(
     target_size=image_size,
     color_mode='grayscale',
     batch_size=batch_size,
-    class_mode='binary'
+    class_mode='binary',
+    shuffle=True
 )
 
 # Generator per il test
@@ -40,7 +42,8 @@ test_generator = test_datagen.flow_from_directory(
     target_size=image_size,
     color_mode='grayscale',
     batch_size=batch_size,
-    class_mode='binary'
+    class_mode='binary',
+    shuffle=True
 )
 
 # Creare un modello estremamente leggero
@@ -54,6 +57,8 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 
+model.summary()
+
 # Compilare il modello
 model.compile(optimizer='adam',
               loss='binary_crossentropy',
@@ -62,13 +67,14 @@ model.compile(optimizer='adam',
 # Addestrare il modello
 model.fit(
     train_generator,
-    epochs=10,
-    validation_data=valid_generator
+    epochs=60,
+    validation_data=valid_generator,
+    verbose=2
 )
 
 # Valutare il modello
 test_loss, test_acc = model.evaluate(test_generator)
 print('\nTest accuracy:', test_acc)
 
-# Salvare il modello come SavedModel
+# Salvare il modello
 model.export('model/saved_model')

@@ -96,15 +96,20 @@ void loop() {
         return;
     }
 
-    // Obtain the quantized output from model's output tensor
-    double probability = (output->data.uint8[0] - output->params.zero_point) * output->params.scale;
+    // Obtain the raw output from model's output tensor
+    MicroPrintf("Raw output: %d", output->data.uint8[0]);
+
+    int predicted_class=0;
+
+    // Real value prediction
+    double prediction = (output->data.uint8[0] - output->params.zero_point) * output->params.scale;
 
     // Output the results
-    MicroPrintf("Probability: %f\n", probability);
+    MicroPrintf("Prediction: %f", prediction);
 
-    int predicted_class = probability > 0.5 ? 1 : 0;
+    int predicted_class = prediction > 0.5 ? 1 : 0;
 
-    MicroPrintf("Predicted class: %d\n", predicted_class);
+    MicroPrintf("Predicted class: %d", predicted_class);
 
     free(image_data);
 }

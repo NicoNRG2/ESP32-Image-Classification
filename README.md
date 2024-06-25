@@ -98,7 +98,8 @@ The project is divided into three main parts:
 
 3. **Generate the C array:**
    ```bash
-   xxd -i model/model_quant.tflite > esp32-classification-project/main/model_data.cc
+   cd model
+   xxd -i model_quant.tflite > ../esp32-classification-project/main/model_data.cc
    ```
 
 ### Deploying on ESP32

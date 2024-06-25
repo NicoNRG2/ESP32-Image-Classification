@@ -67,20 +67,20 @@ end_time = time.time()
 print(f'Accuracy of the TFLite model: {accuracy * 100:.2f}%')
 print(f'Total Inference Time: {end_time - start_time:.2f} seconds')
 
-Found 14 images belonging to 2 classes.
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[2]]
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[2]]
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[10]]
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[0]]
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[19]]
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[40]]
-True Label: [0.], Predicted Label: [[0]], Raw Output: [[70]]
-True Label: [1.], Predicted Label: [[1]], Raw Output: [[200]]
-True Label: [1.], Predicted Label: [[1]], Raw Output: [[143]]
-True Label: [1.], Predicted Label: [[1]], Raw Output: [[255]]
-True Label: [1.], Predicted Label: [[0]], Raw Output: [[89]]
-True Label: [1.], Predicted Label: [[1]], Raw Output: [[255]]
-True Label: [1.], Predicted Label: [[1]], Raw Output: [[177]]
-True Label: [1.], Predicted Label: [[1]], Raw Output: [[255]]
-Accuracy of the TFLite model: 92.86%
-Total Inference Time: 0.02 seconds
+#Found 14 images belonging to 2 classes.
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[2]]
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[2]]
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[10]]
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[0]]
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[19]]
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[40]]
+#True Label: [0.], Predicted Label: [[0]], Raw Output: [[70]]
+#True Label: [1.], Predicted Label: [[1]], Raw Output: [[200]]
+#True Label: [1.], Predicted Label: [[1]], Raw Output: [[143]]
+#True Label: [1.], Predicted Label: [[1]], Raw Output: [[255]]
+#True Label: [1.], Predicted Label: [[0]], Raw Output: [[89]]
+#True Label: [1.], Predicted Label: [[1]], Raw Output: [[255]]
+#True Label: [1.], Predicted Label: [[1]], Raw Output: [[177]]
+#True Label: [1.], Predicted Label: [[1]], Raw Output: [[255]]
+#Accuracy of the TFLite model: 92.86%
+#Total Inference Time: 0.02 seconds

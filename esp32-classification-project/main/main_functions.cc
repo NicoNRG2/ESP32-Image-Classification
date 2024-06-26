@@ -5,6 +5,7 @@
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/schema/schema_generated.h"
+#include "esp_timer.h"
 
 namespace {
 const tflite::Model* model = nullptr;
@@ -89,12 +90,21 @@ void loop() {
     // Place the quantized input in the model's input tensor
     memcpy(input->data.uint8, image_data, input->bytes);
 
+    // Measure inference time
+    int64_t start_time = esp_timer_get_time();
+
     // Run inference, and report any error
     TfLiteStatus invoke_status = interpreter->Invoke();
     if (invoke_status != kTfLiteOk) {
         MicroPrintf("Invoke failed\n");
         return;
     }
+
+    int64_t end_time = esp_timer_get_time();
+    int64_t inference_time = end_time - start_time;
+
+    // Print inference time
+    MicroPrintf("Inference time: %lld microseconds", inference_time);
 
     // Obtain the raw output from model's output tensor
     MicroPrintf("Raw output: %d", output->data.uint8[0]);
